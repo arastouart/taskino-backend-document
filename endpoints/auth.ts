@@ -11,7 +11,6 @@ export const loginSendOtp: Example<{ identifier: string }, void> = {
     identifier: "09054783996",
   },
   response: {
-    status: true,
     message: "کد تایید ارسال شد",
   },
 };
@@ -23,7 +22,6 @@ export const loginVerifyOtp: Example<{ otp: string }, Pick<User, "token">> = {
     otp: "123456",
   },
   response: {
-    status: true,
     data: {
       token: {
         access_token: "access_token_example",
@@ -41,7 +39,6 @@ export const getRole: Example<void, { role: Role }> = {
   method: "get",
   endpoint: "/auth/role",
   response: {
-    status: true,
     data: {
       role: "student",
     },
@@ -63,7 +60,6 @@ export const refreshToken: Example<
     data: {
       refresh_token: "refresh_token_example",
     },
-    status: true,
   },
 };
 
@@ -73,7 +69,6 @@ export const getProfile: Example<void, User> = {
   method: "get",
   endpoint: "/auth/me",
   response: {
-    status: true,
     data: {
       id: "123456",
       isActive: true,
@@ -131,7 +126,6 @@ export const updateProfile: Example<
     fullname: "حمید شاهسونی",
   },
   response: {
-    status: true,
     message: "کد تایید ارسال شد",
   },
   error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
@@ -144,7 +138,6 @@ export const updateProfileVerify: Example<{ otp: string }, void> = {
     otp: "123456",
   },
   response: {
-    status: true,
     message: "عملیات با موفقیت انجام شد",
   },
 };

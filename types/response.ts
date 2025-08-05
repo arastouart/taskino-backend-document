@@ -1,5 +1,5 @@
 export type Response<T = unknown> = {
-  status: boolean;
+  // status: 'error' | 'success';
   data?: T;
   pagination?: {
     totalItems: number;
