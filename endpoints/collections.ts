@@ -108,16 +108,6 @@ export const deleteCollectionById: Request<void, void> = {
   endpoint: "/collections/{collectionId}",
   response: {
     status: "success",
-    message: "کد تایید ارسال شد",
-  },
-};
-
-export const deleteCollectionByIdVerify: Request<void, void> = {
-  method: "get",
-  endpoint: "/collections/{collectionId}/verify",
-  response: {
-    status: "success",
     message: "عملیات با موفقیت انجام شد",
   },
-  error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };

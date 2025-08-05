@@ -111,16 +111,6 @@ export const deleteCourseById: Request<void, void> = {
   endpoint: "/courses/{courseId}",
   response: {
     status: "success",
-    message: "کد تایید ارسال شد",
-  },
-};
-
-export const deleteCourseByIdVerify: Request<void, void> = {
-  method: "get",
-  endpoint: "/courses/{courseId}/verify",
-  response: {
-    status: "success",
     message: "عملیات با موفقیت انجام شد",
   },
-  error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };
