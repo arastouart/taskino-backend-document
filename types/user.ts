@@ -15,7 +15,7 @@ export type User = {
   avatar: string | null;
   id: string;
   isActive: boolean;
-  fullname: string;
+  fullName: string;
   token: {
     accessToken: string;
     refreshToken: string;

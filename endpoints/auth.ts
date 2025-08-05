@@ -43,7 +43,7 @@ export const getRoles: Example<void, { roles: UserRoles }> = {
   response: {
     data: {
       roles: {
-        managementRole: "manager", 
+        managementRole: "manager",
         collections: [
           {
             id: "1",
@@ -108,7 +108,7 @@ export const getProfile: Example<void, User> = {
       avatar: "avatar_url_example",
       id: "123456",
       isActive: true,
-      fullname: "حمید شاهسونی",
+      fullName: "حمید شاهسونی",
       token: {
         accessToken: "accessToken_example",
         refreshToken: "refreshToken_example",
@@ -176,7 +176,7 @@ export const getProfile: Example<void, User> = {
 };
 
 export const updateProfile: Example<
-  Pick<User, "email" | "phone" | "fullname" | "avatar">,
+  Pick<User, "email" | "phone" | "fullName" | "avatar">,
   void
 > = {
   method: "patch",
@@ -185,7 +185,7 @@ export const updateProfile: Example<
     avatar: "avatar_url_example",
     email: "me@gmail.com",
     phone: "09054783996",
-    fullname: "حمید شاهسونی",
+    fullName: "حمید شاهسونی",
   },
   response: {
     message: "کد تایید ارسال شد",
