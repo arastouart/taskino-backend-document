@@ -1,5 +1,6 @@
 import type { Example } from "../types/example";
-import type { User, UserRole } from "../types/user";
+import type { UserRoles } from "../types/role";
+import type { User } from "../types/user";
 
 // login
 
@@ -34,14 +35,43 @@ export const loginVerifyOtp: Example<{ otp: string }, Pick<User, "token">> = {
   error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };
 
-// role
+// roles
 
-export const getRole: Example<void, { role: UserRole }> = {
+export const getRoles: Example<void, { roles: UserRoles }> = {
   method: "get",
-  endpoint: "/auth/role",
+  endpoint: "/auth/roles",
   response: {
     data: {
-      role: "student",
+      roles: {
+        managementRole: "manager", 
+        collections: [
+          {
+            id: "1",
+            titleFa: "سون لرن",
+            courses: {
+              teacher: [
+                { id: "c1", titleFa: "برنامه‌نویسی سی شارپ" },
+                { id: "c2", titleFa: "جاوا اسکریپت مقدماتی" },
+              ],
+              mentor: [{ id: "c3", titleFa: "طراحی رابط کاربری" }],
+            },
+          },
+          {
+            id: "2",
+            titleFa: "راکت",
+            courses: {
+              teacher: [{ id: "c4", titleFa: "توسعه با Node.js" }],
+            },
+          },
+          {
+            id: "3",
+            titleFa: "بیت گرف",
+            courses: {
+              student: [{ id: "c5", titleFa: "آموزش فتوشاپ" }],
+            },
+          },
+        ],
+      },
     },
     status: "success",
   },
@@ -83,7 +113,6 @@ export const getProfile: Example<void, User> = {
         accessToken: "accessToken_example",
         refreshToken: "refreshToken_example",
       },
-      role: "publisher",
       // only for publisher role
       subscription: {
         isActive: true,

@@ -1,13 +1,6 @@
 import type { plan, PlanDisk } from "./plan";
 import type { Wallet } from "./wallet";
 
-export type UserRole =
-  | "student"
-  | "mentor"
-  | "teacher"
-  | "publisher"
-  | "manager";
-
 export type UserSubscription = {
   isActive: boolean;
   apiKey: string;
@@ -27,7 +20,6 @@ export type User = {
     accessToken: string;
     refreshToken: string;
   };
-  role: UserRole;
   subscription: UserSubscription;
   stats: {
     student: {

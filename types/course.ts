@@ -3,6 +3,7 @@ export type Course = {
   titleFa: string; 
   titleEn: string; 
   isActive: boolean;
+  
   responders: {
     mentors: string[];
     teachers: string[];
