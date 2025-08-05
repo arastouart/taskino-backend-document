@@ -1,25 +1,16 @@
-const users = {
-  getAll: {
-    method: "get",
-    endpoint: "/users",
-  },
-  getById: {
-    method: "get",
-    endpoint: "/users/{userId}",
-  },
-  toggleVisibilityUserById: {
-    method: "patch",
-    endpoint: "/users/{userId}/visibility",
-  },
-  resetFullnameById: {
-    method: "patch",
-    endpoint: "/users/{userId}/reset-fullname",
-  },
-};
+/**
+ * 1. get all users
+ * 2. get user by id
+ * 3. toggle visibility of user by id
+ * 4. reset fullname of user by id
+ */
 
-export const getAllCourse: Request<
+import type { Request } from "../types/request";
+import type { User } from "../types/user";
+
+export const getAllUsers: Request<
   void,
-  Pick<Course, "id" | "titleFa" | "titleEn" | "isActive" | "stats">[]
+  Pick<User, "id" | "phone" | "email" | "isActive" | "fullName">[]
 > = {
   method: "get",
   endpoint: "/courses",
@@ -32,14 +23,10 @@ export const getAllCourse: Request<
     data: [
       {
         id: "123456",
-        titleEn: "Course One",
-        titleFa: "مجموعه یک",
+        phone: "09123456789",
+        email: "user@example.com",
         isActive: true,
-        stats: {
-          studentCount: 100,
-          mentorCount: 5,
-          teacherCount: 3,
-        },
+        fullName: "John Doe",
       },
     ],
     pagination: {
@@ -50,48 +37,8 @@ export const getAllCourse: Request<
   },
 };
 
-export const getCourseById: Request<
-  void,
-  Pick<Course, "id" | "titleFa" | "titleEn" | "responders">
-> = {
-  method: "get",
-  endpoint: "/courses/{courseId}",
-  response: {
-    data: {
-      id: "123456",
-      titleEn: "Course One",
-      titleFa: "مجموعه یک",
-      responders: {
-        mentors: ["654321"],
-        teachers: ["123456"],
-      },
-    },
-    status: "success",
-  },
-};
-
-export const updateCourseById: Request<
-  Pick<Course, "titleEn" | "titleFa" | "responders">,
-  void
-> = {
-  method: "patch",
-  endpoint: "/courses/{courseId}",
-  body: {
-    titleEn: "new-english-name",
-    titleFa: "نام جدید",
-    responders: {
-      mentors: ["654321"],
-      teachers: ["123456"],
-    },
-  },
-  response: {
-    message: "عملیات با موفقیت انجام شد",
-    status: "success",
-  },
-};
-
 export const changeVisibilityCourseById: Request<
-  Pick<Course, "isActive">,
+  Pick<User, "isActive">,
   void
 > = {
   method: "patch",
@@ -99,6 +46,18 @@ export const changeVisibilityCourseById: Request<
   body: {
     isActive: true,
   },
+  response: {
+    status: "success",
+    message: "عملیات با موفقیت انجام شد",
+  },
+};
+
+export const resetFullnameById: Request<
+  void,
+  Pick<User, "id" | "fullName">
+> = {
+  method: "patch",
+  endpoint: "/users/{userId}/reset-fullname",
   response: {
     status: "success",
     message: "عملیات با موفقیت انجام شد",
