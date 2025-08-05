@@ -6,7 +6,7 @@ export type Conversation = {
   score: number;
   requester: {
     fullName: string;
-    avatar: string;
+    avatar: string | null;
     averageScore: number;
     level: string;
   };
@@ -15,8 +15,8 @@ export type Conversation = {
     fullName: string;
     timestamp: string;
     text: string;
-    file?: string;
-    voice?: string;
+    file: string | null;
+    voice: string | null;
     role: string;
   }[];
 };
