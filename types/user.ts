@@ -8,8 +8,8 @@ export type User = {
   email?: string;
   phone?: string;
   token: {
-    access_token: string;
-    refresh_token: string;
+    accessToken: string;
+    refreshToken: string;
   };
   role: Role;
   stats: {

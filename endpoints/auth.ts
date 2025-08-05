@@ -24,8 +24,8 @@ export const loginVerifyOtp: Example<{ otp: string }, Pick<User, "token">> = {
   response: {
     data: {
       token: {
-        access_token: "access_token_example",
-        refresh_token: "refresh_token_example",
+        accessToken: "accessToken_example",
+        refreshToken: "refresh_token_example",
       },
     },
     message: "خوش آمدید!",
@@ -48,17 +48,17 @@ export const getRole: Example<void, { role: Role }> = {
 // token
 
 export const refreshToken: Example<
-  Pick<User["token"], "access_token">,
-  Pick<User["token"], "refresh_token">
+  Pick<User["token"], "refreshToken">,
+  Pick<User["token"], "accessToken">
 > = {
   method: "post",
   endpoint: "/auth/refresh",
   body: {
-    access_token: "refresh_token_example",
+    refreshToken: "refresh_token_example",
   },
   response: {
     data: {
-      refresh_token: "refresh_token_example",
+      accessToken: "refresh_token_example",
     },
   },
 };
@@ -77,15 +77,15 @@ export const getProfile: Example<void, User> = {
       email: "me@gmail.com", // optional
       phone: "09044783996", // optional
       token: {
-        access_token: "access_token_example",
-        refresh_token: "refresh_token_example",
+        accessToken: "accessToken_example",
+        refreshToken: "refreshToken_example",
       },
       role: "student",
       stats: {
         // optional
         student: {
           conversationCount: 10,
-          averageScore: 85,
+          averageScore: 8.5,
           level: "intermediate",
         },
         // optional
@@ -118,7 +118,7 @@ export const updateProfile: Example<
   void
 > = {
   method: "patch",
-  endpoint: "/auth/me",
+  endpoint: "/auth/me/profile",
   body: {
     avatar: "avatar_url_example", // optional
     email: "me@gmail.com", // optional
@@ -128,16 +128,16 @@ export const updateProfile: Example<
   response: {
     message: "کد تایید ارسال شد",
   },
-  error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };
 
 export const updateProfileVerify: Example<{ otp: string }, void> = {
-  method: "patch",
-  endpoint: "/auth/me",
+  method: "post",
+  endpoint: "/auth/me/profile/verify",
   body: {
     otp: "123456",
   },
   response: {
     message: "عملیات با موفقیت انجام شد",
   },
+  error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };
