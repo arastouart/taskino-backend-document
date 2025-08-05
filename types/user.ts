@@ -1,14 +1,3 @@
-import type { plan, PlanDisk } from "./plan";
-import type { Wallet } from "./wallet";
-
-export type UserSubscription = {
-  isActive: boolean;
-  apiKey: string;
-  plan: plan;
-  balance: Pick<Wallet, "balance">;
-  diskSpace: Pick<PlanDisk, "total">;
-};
-
 export type User = {
   email: string | null;
   phone: string | null;
@@ -20,7 +9,6 @@ export type User = {
     accessToken: string;
     refreshToken: string;
   };
-  subscription: UserSubscription;
   stats: {
     student: {
       conversationCount: number;

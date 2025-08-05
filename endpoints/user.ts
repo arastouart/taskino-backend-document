@@ -1,10 +1,10 @@
 /**
  * 1. get all users
- * 2. get user by id
- * 3. toggle visibility of user by id
- * 4. reset fullname of user by id
+ * 2. toggle status of user by id
+ * 3. reset fullname of user by id
  */
 
+import { messagesSuccess } from "../messages/success";
 import type { Request } from "../types/request";
 import type { User } from "../types/user";
 
@@ -17,7 +17,7 @@ export const getAllUsers: Request<
   query: {
     page: "1",
     limit: "10",
-    search: '', // filter by [phone, email, fullName, titleFa(collection)(only for rule manager)]
+    search: "", // filter by [phone, email, fullName, titleFa(collection)(only for rule manager)]
   },
   response: {
     data: [
@@ -37,29 +37,23 @@ export const getAllUsers: Request<
   },
 };
 
-export const changeVisibilityCourseById: Request<
-  Pick<User, "isActive">,
-  void
-> = {
+export const changeStatusCourseById: Request<Pick<User, "isActive">, void> = {
   method: "patch",
-  endpoint: "/courses/{courseId}/visibility",
+  endpoint: "/courses/{courseId}/status",
   body: {
     isActive: true,
   },
   response: {
     status: "success",
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[3],
   },
 };
 
-export const resetFullnameById: Request<
-  void,
-  Pick<User, "id" | "fullName">
-> = {
+export const resetFullnameById: Request<void, Pick<User, "id" | "fullName">> = {
   method: "patch",
   endpoint: "/users/{userId}/reset-fullname",
   response: {
     status: "success",
-    message: "عملیات با موفقیت انجام شد",
+    message: "عملیات با نام و نام خانوادگی ریست شد",
   },
 };

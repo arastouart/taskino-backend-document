@@ -7,8 +7,10 @@
  * 4. profile
  *    1. get profile
  *    2. update profile
+ *    3. verify update profile
  */
 
+import { messagesSuccess } from "../messages/success";
 import type { Request } from "../types/request";
 import type { UserRoles } from "../types/role";
 import type { User } from "../types/user";
@@ -124,35 +126,6 @@ export const getProfile: Request<void, User> = {
         accessToken: "accessToken_example",
         refreshToken: "refreshToken_example",
       },
-      // only for publisher role
-      subscription: {
-        isActive: true,
-        apiKey: "api_key_example",
-        plan: {
-          id: "plan_id_example",
-          title: "Plan Title",
-          amount: 100,
-          durationDays: 30,
-          remainingDays: 15,
-          diskSpace: {
-            total: 1024,
-          },
-          code: "plan_code_example",
-          userLimits: {
-            teacherCount: 5,
-            mentorCount: 10,
-            studentCount: 100,
-          },
-          badage: "badge_example",
-          ai: 3.5,
-        },
-        balance: {
-          balance: 500,
-        },
-        diskSpace: {
-          total: 1024,
-        },
-      },
       stats: {
         // only for student role
         student: {
@@ -186,20 +159,32 @@ export const getProfile: Request<void, User> = {
   },
 };
 
-export const updateProfile: Request<
-  Pick<User, "email" | "phone" | "fullName" | "avatar">,
-  void
+export const updateProfileById: Request<
+  Pick<User, "email" | "phone" | "avatar" | "fullName">,
+  User
 > = {
-  method: "patch",
-  endpoint: "/auth/me/profile",
+  method: "put",
+  endpoint: "/users/{userId}",
   body: {
-    avatar: "avatar_url_example",
-    email: "me@gmail.com",
-    phone: "09054783996",
-    fullName: "حمید شاهسونی",
+    avatar: null,
+    email: "user@example.com",
+    phone: "09123456789",
+    fullName: "John Doe",
   },
   response: {
-    message: "کد تایید ارسال شد",
     status: "success",
+    message: "کد تایید ارسال شد",
+  },
+};
+
+export const verifyUpdateProfileById: Request<{ otp: string }, User> = {
+  method: "patch",
+  endpoint: "/users/{userId}/verify",
+  body: {
+    otp: "123456",
+  },
+  response: {
+    status: "success",
+    message: messagesSuccess[0],
   },
 };

@@ -3,10 +3,11 @@
  * 2. get all collections
  * 3. get collection by id
  * 4. update collection by id
- * 5. change visibility of collection by id
+ * 5. change status of collection by id
  * 6. delete collection by id
  */
 
+import { messagesSuccess } from "../messages/success";
 import type { Collection } from "../types/collection";
 import type { Request } from "../types/request";
 
@@ -22,7 +23,7 @@ export const createCollection: Request<
     website: "https://example.com", // optional
   },
   response: {
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[0],
     status: "success",
   },
 };
@@ -91,23 +92,23 @@ export const updateCollectionById: Request<
     website: "https://example.com",
   },
   response: {
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[1],
     status: "success",
   },
 };
 
-export const changeVisibilityCollectionById: Request<
+export const changeStatusCollectionById: Request<
   Pick<Collection, "isActive">,
   void
 > = {
   method: "patch",
-  endpoint: "/collections/{collectionId}/visibility",
+  endpoint: "/collections/{collectionId}/status",
   body: {
     isActive: true,
   },
   response: {
     status: "success",
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[3],
   },
 };
 
@@ -116,6 +117,6 @@ export const deleteCollectionById: Request<void, void> = {
   endpoint: "/collections/{collectionId}",
   response: {
     status: "success",
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[2],
   },
 };

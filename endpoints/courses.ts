@@ -3,10 +3,11 @@
  * 2. get all courses
  * 3. get course by id
  * 4. update course by id
- * 5. change visibility of course by id
+ * 5. change status of course by id
  * 6. delete course by id
  */
 
+import { messagesSuccess } from "../messages/success";
 import type { Course } from "../types/course";
 import type { Request } from "../types/request";
 
@@ -25,7 +26,7 @@ export const createCourse: Request<
     },
   },
   response: {
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[0],
     status: "success",
   },
 };
@@ -97,23 +98,20 @@ export const updateCourseById: Request<
     },
   },
   response: {
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[1],
     status: "success",
   },
 };
 
-export const changeVisibilityCourseById: Request<
-  Pick<Course, "isActive">,
-  void
-> = {
+export const changeStatusCourseById: Request<Pick<Course, "isActive">, void> = {
   method: "patch",
-  endpoint: "/courses/{courseId}/visibility",
+  endpoint: "/courses/{courseId}/status",
   body: {
     isActive: true,
   },
   response: {
     status: "success",
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[3],
   },
 };
 
@@ -122,6 +120,6 @@ export const deleteCourseById: Request<void, void> = {
   endpoint: "/courses/{courseId}",
   response: {
     status: "success",
-    message: "عملیات با موفقیت انجام شد",
+    message: messagesSuccess[2],
   },
 };
