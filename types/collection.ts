@@ -1,10 +1,10 @@
 export type Collection = {
+  website: string | null;
   id: string;
-  englishName: string;
-  persianName: string;
-  website?: string;
-  isActive?: boolean;
-  stats?: {
+  titleEn: string;
+  titleFa: string;
+  isActive: boolean;
+  stats: {
     courseCount: number;
     studentCount: number;
     mentorCount: number;

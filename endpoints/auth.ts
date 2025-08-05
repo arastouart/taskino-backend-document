@@ -1,6 +1,5 @@
 import type { Example } from "../types/example";
-import type { Role } from "../types/role";
-import type { User } from "../types/user";
+import type { User, UserRole } from "../types/user";
 
 // login
 
@@ -35,7 +34,7 @@ export const loginVerifyOtp: Example<{ otp: string }, Pick<User, "token">> = {
 
 // role
 
-export const getRole: Example<void, { role: Role }> = {
+export const getRole: Example<void, { role: UserRole }> = {
   method: "get",
   endpoint: "/auth/role",
   response: {
@@ -70,37 +69,66 @@ export const getProfile: Example<void, User> = {
   endpoint: "/auth/me",
   response: {
     data: {
+      email: "me@gmail.com",
+      phone: "09044783996",
+      avatar: "avatar_url_example",
       id: "123456",
       isActive: true,
-      avatar: "avatar_url_example", // optional
       fullname: "حمید شاهسونی",
-      email: "me@gmail.com", // optional
-      phone: "09044783996", // optional
       token: {
         accessToken: "accessToken_example",
         refreshToken: "refreshToken_example",
       },
-      role: "student",
+      role: 'publisher',
+      // only for publisher role
+      subscription: {
+        isActive: true,
+        apiKey: "api_key_example",
+        plan: {
+          id: "plan_id_example",
+          title: "Plan Title",
+          amount: 100,
+          durationDays: 30,
+          remainingDays: 15,
+          diskSpace: {
+            total: 1024,
+          },
+          code: "plan_code_example",
+          userLimits: {
+            teacherCount: 5,
+            mentorCount: 10,
+            studentCount: 100,
+          },
+          badage: "badge_example",
+          ai: 3.5,
+        },
+        balance: {
+          balance: 500,
+        },
+        diskSpace: {
+          total: 1024,
+        },
+      },
       stats: {
-        // optional
+        // only for student role
         student: {
           conversationCount: 10,
           averageScore: 8.5,
           level: "intermediate",
         },
-        // optional
+        // only for mentor role
         mentor: {
           sentFileCount: 5,
           reviewedCount: 20,
           averageReviewTimeInMinutes: 30,
         },
-        // optional
+        // only for teacher role
         teacher: {
           sentFileCount: 3,
           reviewedCount: 15,
           averageReviewTimeInMinutes: 25,
         },
-        // optional
+        // only for publisher role
         publisher: {
           studentCount: 100,
           mentorCount: 50,

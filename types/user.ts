@@ -1,34 +1,51 @@
-import type { Role } from "./role";
+import type { plan, PlanDisk } from "./plan";
+import type { Wallet } from "./wallet";
+
+export type UserRole =
+  | "student"
+  | "mentor"
+  | "teacher"
+  | "publisher"
+  | "manager";
+
+export type UserSubscription = {
+  isActive: boolean;
+  apiKey: string;
+  plan: plan;
+  balance: Pick<Wallet, "balance">;
+  diskSpace: Pick<PlanDisk, "total">;
+};
 
 export type User = {
+  email: string | null;
+  phone: string | null;
+  avatar: string | null;
   id: string;
   isActive: boolean;
-  avatar: string;
-  fullname?: string;
-  email?: string;
-  phone?: string;
+  fullname: string;
   token: {
     accessToken: string;
     refreshToken: string;
   };
-  role: Role;
+  role: UserRole;
+  subscription: UserSubscription;
   stats: {
-    student?: {
+    student: {
       conversationCount: number;
       averageScore: number;
       level: "beginner" | "intermediate" | "advanced";
     };
-    mentor?: {
+    mentor: {
       sentFileCount: number;
       reviewedCount: number;
       averageReviewTimeInMinutes: number;
     };
-    teacher?: {
+    teacher: {
       sentFileCount: number;
       reviewedCount: number;
       averageReviewTimeInMinutes: number;
     };
-    publisher?: {
+    publisher: {
       studentCount: number;
       mentorCount: number;
       teacherCount: number;
