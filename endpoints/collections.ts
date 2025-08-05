@@ -28,7 +28,7 @@ export const createCollection: Request<
   },
 };
 
-export const getAllCollection: Request<void, Collection[]> = {
+export const getAllCollections: Request<void, Collection[]> = {
   method: "get",
   endpoint: "/collections",
   query: {

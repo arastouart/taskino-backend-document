@@ -1,9 +1,13 @@
 import type { Request } from "../types/request";
 import type { Transaction } from "../types/transaction";
 
-export const getAllCollection: Request<void, Transaction[]> = {
+/*
+ * 1. get all transactions
+ */
+
+export const getAllTransactions: Request<void, Transaction[]> = {
   method: "get",
-  endpoint: "/collections",
+  endpoint: "/transactions",
   query: {
     page: "1",
     limit: "10",

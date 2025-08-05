@@ -31,7 +31,7 @@ export const createCourse: Request<
   },
 };
 
-export const getAllCourse: Request<
+export const getAllCourses: Request<
   void,
   Pick<Course, "id" | "titleFa" | "titleEn" | "isActive" | "stats">[]
 > = {

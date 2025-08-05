@@ -24,7 +24,7 @@ export const createCopun: Request<Pick<Copun, "code" | "plans">, void> = {
   },
 };
 
-export const getAllCopun: Request<void, Copun[]> = {
+export const getAllCopuns: Request<void, Copun[]> = {
   method: "get",
   endpoint: "/copuns",
   query: {
