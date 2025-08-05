@@ -11,6 +11,7 @@ export const loginSendOtp: Example<{ identifier: string }, void> = {
   },
   response: {
     message: "کد تایید ارسال شد",
+    status: "success",
   },
 };
 
@@ -27,6 +28,7 @@ export const loginVerifyOtp: Example<{ otp: string }, Pick<User, "token">> = {
         refreshToken: "refresh_token_example",
       },
     },
+    status: "success",
     message: "خوش آمدید!",
   },
   error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
@@ -41,6 +43,7 @@ export const getRole: Example<void, { role: UserRole }> = {
     data: {
       role: "student",
     },
+    status: "success",
   },
 };
 
@@ -59,6 +62,7 @@ export const refreshToken: Example<
     data: {
       accessToken: "refresh_token_example",
     },
+    status: "success",
   },
 };
 
@@ -79,7 +83,7 @@ export const getProfile: Example<void, User> = {
         accessToken: "accessToken_example",
         refreshToken: "refreshToken_example",
       },
-      role: 'publisher',
+      role: "publisher",
       // only for publisher role
       subscription: {
         isActive: true,
@@ -138,6 +142,7 @@ export const getProfile: Example<void, User> = {
         },
       },
     },
+    status: "success",
   },
 };
 
@@ -155,6 +160,7 @@ export const updateProfile: Example<
   },
   response: {
     message: "کد تایید ارسال شد",
+    status: "success",
   },
 };
 
@@ -166,6 +172,7 @@ export const updateProfileVerify: Example<{ otp: string }, void> = {
   },
   response: {
     message: "عملیات با موفقیت انجام شد",
+    status: "success",
   },
   error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };
