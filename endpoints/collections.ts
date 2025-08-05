@@ -88,15 +88,6 @@ export const updateCollectionById: Request<
   },
 };
 
-export const deleteCollectionById: Request<void, void> = {
-  method: "delete",
-  endpoint: "/collections/{collectionId}",
-  response: {
-    status: "success",
-    message: "عملیات با موفقیت انجام شد",
-  },
-};
-
 export const changeStatusCollectionById: Request<
   Pick<Collection, "isActive">,
   void
@@ -107,7 +98,26 @@ export const changeStatusCollectionById: Request<
     isActive: true,
   },
   response: {
-    status: 'success',
+    status: "success",
     message: "عملیات با موفقیت انجام شد",
   },
+};
+
+export const deleteCollectionById: Request<void, void> = {
+  method: "delete",
+  endpoint: "/collections/{collectionId}",
+  response: {
+    status: "success",
+    message: "کد تایید ارسال شد",
+  },
+};
+
+export const deleteCollectionByIdVerify: Request<void, void> = {
+  method: "get",
+  endpoint: "/collections/{collectionId}/verify",
+  response: {
+    status: "success",
+    message: "عملیات با موفقیت انجام شد",
+  },
+  error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };
