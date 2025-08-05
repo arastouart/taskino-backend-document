@@ -10,7 +10,7 @@ export type Conversation = {
     averageScore: number;
     level: string;
   };
-  interactions: {
+  history: {
     type: 'requester' | 'responder';
     fullName: string;
     timestamp: string;
