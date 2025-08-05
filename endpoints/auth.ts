@@ -153,9 +153,9 @@ export const updateProfile: Example<
   method: "patch",
   endpoint: "/auth/me/profile",
   body: {
-    avatar: "avatar_url_example", // optional
-    email: "me@gmail.com", // optional
-    phone: "09054783996", // optional
+    avatar: "avatar_url_example",
+    email: "me@gmail.com",
+    phone: "09054783996",
     fullname: "حمید شاهسونی",
   },
   response: {
