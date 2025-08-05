@@ -1,0 +1,1 @@
+export type Role = 'student' | 'mentor' | 'teacher' | 'publisher' | 'manager';
