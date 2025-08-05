@@ -29,7 +29,6 @@ export const getAllCopun: Request<void, Copun[]> = {
   query: {
     page: "1",
     limit: "10",
-    search: "",
   },
   response: {
     data: [

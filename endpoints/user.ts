@@ -17,7 +17,7 @@ export const getAllUsers: Request<
   query: {
     page: "1",
     limit: "10",
-    search: "",
+    search: '', // filter by [phone, email, fullName, titleFa(collection)(only for rule manager)]
   },
   response: {
     data: [

@@ -1,13 +1,14 @@
 import type { Collection } from "./collection";
 import type { Course } from "./course";
 
+export type UserRoleManagment = "manager" | "publisher";
+export type UserRoleConversation = "mentor" | "teacher" | "student";
+
 export type UserRoles = {
-  managementRole: ("manager" | "publisher");
+  managementRole: UserRoleManagment;
   collections: (Pick<Collection, "id" | "titleFa"> & {
-    courses: {
-      student?: Pick<Course, "id" | "titleFa">[];
-      mentor?: Pick<Course, "id" | "titleFa">[];
-      teacher?: Pick<Course, "id" | "titleFa">[];
-    };
+    courses: Partial<
+      Record<UserRoleConversation, Pick<Course, "id" | "titleFa">[]>
+    >;
   })[];
 };

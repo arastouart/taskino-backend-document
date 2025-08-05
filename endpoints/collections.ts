@@ -33,7 +33,6 @@ export const getAllCollection: Request<void, Collection[]> = {
   query: {
     page: "1",
     limit: "10",
-    search: "",
   },
   response: {
     data: [
