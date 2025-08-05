@@ -1,3 +1,14 @@
+/*
+ * 1. login
+ *    1. send otp
+ *    2. verify otp
+ * 2. get rules
+ * 3. refresh token
+ * 4. profile
+ *    1. get profile
+ *    2. update profile
+ */
+
 import type { Request } from "../types/request";
 import type { UserRoles } from "../types/role";
 import type { User } from "../types/user";
@@ -191,17 +202,4 @@ export const updateProfile: Request<
     message: "کد تایید ارسال شد",
     status: "success",
   },
-};
-
-export const updateProfileVerify: Request<{ otp: string }, void> = {
-  method: "post",
-  endpoint: "/auth/me/profile/verify",
-  body: {
-    otp: "123456",
-  },
-  response: {
-    message: "عملیات با موفقیت انجام شد",
-    status: "success",
-  },
-  error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };

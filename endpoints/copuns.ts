@@ -1,15 +1,21 @@
+/*
+ * 1. create copun
+ * 2. get all copuns
+ * 3. get copun by id
+ * 4. update copun by id
+ * 5. change visibility of copun by id
+ * 6. delete copun by id
+ */
+
 import type { Copun } from "../types/copun";
 import type { Request } from "../types/request";
 
-export const createCopun: Request<
-  Pick<Copun, 'code' | 'plans'>,
-  void
-> = {
+export const createCopun: Request<Pick<Copun, "code" | "plans">, void> = {
   method: "post",
   endpoint: "/copuns",
   body: {
-    code: 'NEW-COPUN-CODE',
-    plans: ['654321', '123456'],
+    code: "NEW-COPUN-CODE",
+    plans: ["654321", "123456"],
   },
   response: {
     message: "عملیات با موفقیت انجام شد",
@@ -56,10 +62,7 @@ export const getCopunById: Request<void, Copun> = {
   },
 };
 
-export const updateCopunById: Request<
-  Pick<Copun, "code" | "plans">,
-  void
-> = {
+export const updateCopunById: Request<Pick<Copun, "code" | "plans">, void> = {
   method: "patch",
   endpoint: "/copuns/{copunId}",
   body: {
@@ -72,12 +75,12 @@ export const updateCopunById: Request<
   },
 };
 
-export const changeStatusCopunById: Request<
+export const changeVisibilityCopunById: Request<
   Pick<Copun, "isActive">,
   void
 > = {
   method: "patch",
-  endpoint: "/copuns/{copunId}/status",
+  endpoint: "/copuns/{copunId}/visibility",
   body: {
     isActive: true,
   },

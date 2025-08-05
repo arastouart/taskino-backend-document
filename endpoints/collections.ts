@@ -1,3 +1,12 @@
+/*
+ * 1. create collection
+ * 2. get all collections
+ * 3. get collection by id
+ * 4. update collection by id
+ * 5. change visibility of collection by id
+ * 6. delete collection by id
+ */
+
 import type { Collection } from "../types/collection";
 import type { Request } from "../types/request";
 
@@ -88,12 +97,12 @@ export const updateCollectionById: Request<
   },
 };
 
-export const changeStatusCollectionById: Request<
+export const changeVisibilityCollectionById: Request<
   Pick<Collection, "isActive">,
   void
 > = {
   method: "patch",
-  endpoint: "/collections/{collectionId}/status",
+  endpoint: "/collections/{collectionId}/visibility",
   body: {
     isActive: true,
   },

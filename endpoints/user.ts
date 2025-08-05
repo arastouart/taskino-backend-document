@@ -1,32 +1,19 @@
-/**
- * 1. create course
- * 2. get all courses
- * 3. get course by id
- * 4. update course by id
- * 5. change visibility of course by id
- * 6. delete course by id
- */
-
-import type { Course } from "../types/course";
-import type { Request } from "../types/request";
-
-export const createCourse: Request<
-  Pick<Course, "titleFa" | "titleEn" | "responders">,
-  void
-> = {
-  method: "post",
-  endpoint: "/courses",
-  body: {
-    titleEn: "English Name Request",
-    titleFa: "نام فارسی مثال",
-    responders: {
-      mentors: ["654321"],
-      teachers: ["123456"],
-    },
+const users = {
+  getAll: {
+    method: "get",
+    endpoint: "/users",
   },
-  response: {
-    message: "عملیات با موفقیت انجام شد",
-    status: "success",
+  getById: {
+    method: "get",
+    endpoint: "/users/{userId}",
+  },
+  toggleVisibilityUserById: {
+    method: "patch",
+    endpoint: "/users/{userId}/visibility",
+  },
+  resetFullnameById: {
+    method: "patch",
+    endpoint: "/users/{userId}/reset-fullname",
   },
 };
 
@@ -112,15 +99,6 @@ export const changeVisibilityCourseById: Request<
   body: {
     isActive: true,
   },
-  response: {
-    status: "success",
-    message: "عملیات با موفقیت انجام شد",
-  },
-};
-
-export const deleteCourseById: Request<void, void> = {
-  method: "delete",
-  endpoint: "/courses/{courseId}",
   response: {
     status: "success",
     message: "عملیات با موفقیت انجام شد",
