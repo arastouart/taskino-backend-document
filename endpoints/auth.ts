@@ -1,10 +1,10 @@
-import type { Example } from "../types/example";
+import type { Request } from "../types/request";
 import type { UserRoles } from "../types/role";
 import type { User } from "../types/user";
 
 // login
 
-export const loginSendOtp: Example<{ identifier: string }, void> = {
+export const loginSendOtp: Request<{ identifier: string }, void> = {
   method: "post",
   endpoint: "/auth/login",
   body: {
@@ -16,7 +16,7 @@ export const loginSendOtp: Example<{ identifier: string }, void> = {
   },
 };
 
-export const loginVerifyOtp: Example<{ otp: string }, Pick<User, "token">> = {
+export const loginVerifyOtp: Request<{ otp: string }, Pick<User, "token">> = {
   method: "post",
   endpoint: "/auth/login/verify",
   body: {
@@ -37,7 +37,7 @@ export const loginVerifyOtp: Example<{ otp: string }, Pick<User, "token">> = {
 
 // roles
 
-export const getRoles: Example<void, { roles: UserRoles }> = {
+export const getRoles: Request<void, { roles: UserRoles }> = {
   method: "get",
   endpoint: "/auth/roles",
   response: {
@@ -79,7 +79,7 @@ export const getRoles: Example<void, { roles: UserRoles }> = {
 
 // token
 
-export const refreshToken: Example<
+export const refreshToken: Request<
   Pick<User["token"], "refreshToken">,
   Pick<User["token"], "accessToken">
 > = {
@@ -98,7 +98,7 @@ export const refreshToken: Example<
 
 // profile
 
-export const getProfile: Example<void, User> = {
+export const getProfile: Request<void, User> = {
   method: "get",
   endpoint: "/auth/me",
   response: {
@@ -175,7 +175,7 @@ export const getProfile: Example<void, User> = {
   },
 };
 
-export const updateProfile: Example<
+export const updateProfile: Request<
   Pick<User, "email" | "phone" | "fullName" | "avatar">,
   void
 > = {
@@ -193,7 +193,7 @@ export const updateProfile: Example<
   },
 };
 
-export const updateProfileVerify: Example<{ otp: string }, void> = {
+export const updateProfileVerify: Request<{ otp: string }, void> = {
   method: "post",
   endpoint: "/auth/me/profile/verify",
   body: {
