@@ -2,9 +2,8 @@
  * 1. login
  *    1. send otp
  *    2. verify otp
- * 2. get rules
- * 3. refresh token
- * 4. profile
+ * 2. refresh token
+ * 3. profile
  *    1. get profile
  *    2. update profile
  *    3. verify update profile
@@ -12,7 +11,6 @@
 
 import { messagesSuccess } from "../messages/success";
 import type { Request } from "../types/request";
-import type { UserRoles } from "../types/role";
 import type { User } from "../types/user";
 
 // login
@@ -48,48 +46,6 @@ export const loginVerifyOtp: Request<{ otp: string }, Pick<User, "token">> = {
   error: ["کد تایید اشتباه است", "کد تایید منقضی شده است , کد جدید ارسال شد"],
 };
 
-// roles
-
-export const getRoles: Request<void, { roles: UserRoles }> = {
-  method: "get",
-  endpoint: "/auth/roles",
-  response: {
-    data: {
-      roles: {
-        managementRole: "manager",
-        collections: [
-          {
-            id: "1",
-            titleFa: "سون لرن",
-            courses: {
-              teacher: [
-                { id: "c1", titleFa: "برنامه‌نویسی سی شارپ" },
-                { id: "c2", titleFa: "جاوا اسکریپت مقدماتی" },
-              ],
-              mentor: [{ id: "c3", titleFa: "طراحی رابط کاربری" }],
-            },
-          },
-          {
-            id: "2",
-            titleFa: "راکت",
-            courses: {
-              teacher: [{ id: "c4", titleFa: "توسعه با Node.js" }],
-            },
-          },
-          {
-            id: "3",
-            titleFa: "بیت گرف",
-            courses: {
-              student: [{ id: "c5", titleFa: "آموزش فتوشاپ" }],
-            },
-          },
-        ],
-      },
-    },
-    status: "success",
-  },
-};
-
 // token
 
 export const refreshToken: Request<
@@ -116,11 +72,11 @@ export const getProfile: Request<void, User> = {
   endpoint: "/auth/me",
   response: {
     data: {
+      isActive: true,
       email: "me@gmail.com",
       phone: "09044783996",
       avatar: "avatar_url_example",
       id: "123456",
-      isActive: true,
       fullName: "حمید شاهسونی",
       token: {
         accessToken: "accessToken_example",
@@ -159,7 +115,7 @@ export const getProfile: Request<void, User> = {
   },
 };
 
-export const updateProfileById: Request<
+export const updateProfileByUserId: Request<
   Pick<User, "email" | "phone" | "avatar" | "fullName">,
   User
 > = {
@@ -177,7 +133,7 @@ export const updateProfileById: Request<
   },
 };
 
-export const verifyUpdateProfileById: Request<{ otp: string }, User> = {
+export const verifyUpdateProfileByUserId: Request<{ otp: string }, User> = {
   method: "patch",
   endpoint: "/users/{userId}/verify",
   body: {

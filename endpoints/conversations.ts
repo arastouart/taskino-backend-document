@@ -16,7 +16,7 @@ import type {
 import type { Request } from "../types/request";
 import type { UserRoleConversation, UserRoleManagment } from "../types/role";
 
-export const getAllConversations: Request<
+export const getAllConversationsByCollectionId: Request<
   void,
   Pick<
     Conversation,
@@ -24,7 +24,7 @@ export const getAllConversations: Request<
   >[]
 > = {
   method: "get",
-  endpoint: "/conversations",
+  endpoint: "/conversations/{collectionId}",
   query: {
     page: "1",
     limit: "10",
@@ -53,7 +53,25 @@ export const getAllConversations: Request<
   },
 };
 
-export const getConversationById: Request<void, Conversation> = {
+export const createConversation: Request<
+  Pick<Conversation["starter"], "title" | "sessionNumber" | "text" | "file">,
+  void
+> = {
+  method: "post",
+  endpoint: "/conversations",
+  body: {
+    title: "New Conversation",
+    sessionNumber: 1,
+    text: "Let's start a new conversation.",
+    file: null,
+  },
+  response: {
+    message: messagesSuccess[0],
+    status: "success",
+  },
+};
+
+export const getConversationByConversationId: Request<void, Conversation> = {
   method: "get",
   endpoint: "/conversations/{conversationId}",
   response: {
@@ -101,25 +119,7 @@ export const getConversationById: Request<void, Conversation> = {
   },
 };
 
-export const createConversation: Request<
-  Pick<Conversation["starter"], "title" | "sessionNumber" | "text" | "file">,
-  void
-> = {
-  method: "post",
-  endpoint: "/conversations",
-  body: {
-    title: "New Conversation",
-    sessionNumber: 1,
-    text: "Let's start a new conversation.",
-    file: null,
-  },
-  response: {
-    message: messagesSuccess[0],
-    status: "success",
-  },
-};
-
-export const deleteConversationById: Request<void, void> = {
+export const deleteConversationByConversationId: Request<void, void> = {
   method: "delete",
   endpoint: "/conversations/{conversationId}",
   response: {
@@ -128,7 +128,7 @@ export const deleteConversationById: Request<void, void> = {
   },
 };
 
-export const answerConversationById: Request<
+export const answerConversationByConversationId: Request<
   Pick<ConversationRequester, "text" | "file">,
   void
 > = {
@@ -144,7 +144,7 @@ export const answerConversationById: Request<
   },
 };
 
-export const questionConversationById: Request<
+export const questionConversationByConversationId: Request<
   Pick<ConversationResponder, "text" | "file" | "voice">,
   void
 > = {

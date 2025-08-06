@@ -48,7 +48,7 @@ export const getAllCopuns: Request<void, Copun[]> = {
   },
 };
 
-export const getCopunById: Request<void, Copun> = {
+export const getCopunByCopunId: Request<void, Copun> = {
   method: "get",
   endpoint: "/copuns/{copunId}",
   response: {
@@ -62,7 +62,10 @@ export const getCopunById: Request<void, Copun> = {
   },
 };
 
-export const updateCopunById: Request<Pick<Copun, "code" | "plans">, void> = {
+export const updateCopunByCopunId: Request<
+  Pick<Copun, "code" | "plans">,
+  void
+> = {
   method: "patch",
   endpoint: "/copuns/{copunId}",
   body: {
@@ -75,7 +78,10 @@ export const updateCopunById: Request<Pick<Copun, "code" | "plans">, void> = {
   },
 };
 
-export const changeStatusCopunById: Request<Pick<Copun, "isActive">, void> = {
+export const changeStatusCopunByCopunId: Request<
+  Pick<Copun, "isActive">,
+  void
+> = {
   method: "patch",
   endpoint: "/copuns/{copunId}/status",
   body: {
@@ -87,7 +93,7 @@ export const changeStatusCopunById: Request<Pick<Copun, "isActive">, void> = {
   },
 };
 
-export const deleteCopunById: Request<void, void> = {
+export const deleteCopunByCopunId: Request<void, void> = {
   method: "delete",
   endpoint: "/copuns/{copunId}",
   response: {

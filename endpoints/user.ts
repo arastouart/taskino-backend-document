@@ -37,9 +37,9 @@ export const getAllUsers: Request<
   },
 };
 
-export const changeStatusCourseById: Request<Pick<User, "isActive">, void> = {
+export const changeStatusUserByUserId: Request<Pick<User, "isActive">, void> = {
   method: "patch",
-  endpoint: "/courses/{courseId}/status",
+  endpoint: "/users/{userId}/status",
   body: {
     isActive: true,
   },
@@ -49,7 +49,10 @@ export const changeStatusCourseById: Request<Pick<User, "isActive">, void> = {
   },
 };
 
-export const resetFullnameById: Request<void, Pick<User, "id" | "fullName">> = {
+export const resetFullnameByUserId: Request<
+  void,
+  Pick<User, "id" | "fullName">
+> = {
   method: "patch",
   endpoint: "/users/{userId}/reset-fullname",
   response: {

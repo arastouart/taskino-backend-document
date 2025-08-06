@@ -1,9 +1,10 @@
-import type { Request } from "../types/request";
-import type { Transaction } from "../types/transaction";
-
 /*
  * 1. get all transactions
  */
+
+import type { Request } from "../types/request";
+import type { Transaction } from "../types/transaction";
+
 
 export const getAllTransactions: Request<void, Transaction[]> = {
   method: "get",

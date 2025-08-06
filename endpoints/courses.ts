@@ -11,12 +11,12 @@ import { messagesSuccess } from "../messages/success";
 import type { Course } from "../types/course";
 import type { Request } from "../types/request";
 
-export const createCourse: Request<
+export const createCourseByCollectionId: Request<
   Pick<Course, "titleFa" | "titleEn" | "responders">,
   void
 > = {
   method: "post",
-  endpoint: "/courses",
+  endpoint: "/courses/{collectionId}",
   body: {
     titleEn: "English Name Request",
     titleFa: "نام فارسی مثال",
@@ -31,12 +31,12 @@ export const createCourse: Request<
   },
 };
 
-export const getAllCourses: Request<
+export const getAllCoursesByCollectionId: Request<
   void,
   Pick<Course, "id" | "titleFa" | "titleEn" | "isActive" | "stats">[]
 > = {
   method: "get",
-  endpoint: "/courses",
+  endpoint: "/courses/{collectionId}",
   query: {
     page: "1",
     limit: "10",
@@ -63,7 +63,7 @@ export const getAllCourses: Request<
   },
 };
 
-export const getCourseById: Request<
+export const getCourseByCourseId: Request<
   void,
   Pick<Course, "id" | "titleFa" | "titleEn" | "responders">
 > = {
@@ -83,7 +83,7 @@ export const getCourseById: Request<
   },
 };
 
-export const updateCourseById: Request<
+export const updateCourseByCourseId: Request<
   Pick<Course, "titleEn" | "titleFa" | "responders">,
   void
 > = {
@@ -103,7 +103,10 @@ export const updateCourseById: Request<
   },
 };
 
-export const changeStatusCourseById: Request<Pick<Course, "isActive">, void> = {
+export const changeStatusCourseByCourseId: Request<
+  Pick<Course, "isActive">,
+  void
+> = {
   method: "patch",
   endpoint: "/courses/{courseId}/status",
   body: {
@@ -115,7 +118,7 @@ export const changeStatusCourseById: Request<Pick<Course, "isActive">, void> = {
   },
 };
 
-export const deleteCourseById: Request<void, void> = {
+export const deleteCourseByCourseId: Request<void, void> = {
   method: "delete",
   endpoint: "/courses/{courseId}",
   response: {

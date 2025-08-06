@@ -59,7 +59,7 @@ export const getAllCollections: Request<void, Collection[]> = {
   },
 };
 
-export const getCollectionById: Request<void, Collection> = {
+export const getCollectionByCollectionId: Request<void, Collection> = {
   method: "get",
   endpoint: "/collections/{collectionId}",
   response: {
@@ -80,7 +80,7 @@ export const getCollectionById: Request<void, Collection> = {
   },
 };
 
-export const updateCollectionById: Request<
+export const updateCollectionByCollectionId: Request<
   Pick<Collection, "titleEn" | "titleFa" | "website">,
   void
 > = {
@@ -97,7 +97,7 @@ export const updateCollectionById: Request<
   },
 };
 
-export const changeStatusCollectionById: Request<
+export const changeStatusCollectionByCollectionId: Request<
   Pick<Collection, "isActive">,
   void
 > = {
@@ -112,7 +112,7 @@ export const changeStatusCollectionById: Request<
   },
 };
 
-export const deleteCollectionById: Request<void, void> = {
+export const deleteCollectionByCollectionId: Request<void, void> = {
   method: "delete",
   endpoint: "/collections/{collectionId}",
   response: {
