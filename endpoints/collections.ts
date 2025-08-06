@@ -1,10 +1,10 @@
 /*
- * 1. create collection
- * 2. get all collections
- * 3. get collection by id
- * 4. update collection by id
- * 5. change status of collection by id
- * 6. delete collection by id
+ * 1. create collection [publisher]
+ * 2. get all collections [publisher]
+ * 3. get collection by collection id [publisher]
+ * 4. update collection by collection id [publisher]
+ * 5. change status of collection by collection id [publisher]
+ * 6. delete collection by collection id [publisher]
  */
 
 import { messagesSuccess } from "../messages/success";

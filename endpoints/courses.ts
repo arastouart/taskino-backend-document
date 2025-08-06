@@ -1,10 +1,10 @@
 /**
- * 1. create course
- * 2. get all courses
- * 3. get course by id
- * 4. update course by id
- * 5. change status of course by id
- * 6. delete course by id
+ * 1. create course 
+ * 2. get all courses by collection id
+ * 3. get course by course id
+ * 4. update course by course id
+ * 5. change status of course by course id
+ * 6. delete course by course id
  */
 
 import { messagesSuccess } from "../messages/success";

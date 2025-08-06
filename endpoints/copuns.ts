@@ -1,10 +1,10 @@
 /*
  * 1. create copun
  * 2. get all copuns
- * 3. get copun by id
- * 4. update copun by id
- * 5. change status of copun by id
- * 6. delete copun by id
+ * 3. get copun by copun id
+ * 4. update copun by copun id
+ * 5. change status of copun by copun id
+ * 6. delete copun by copun id
  */
 
 import { messagesSuccess } from "../messages/success";

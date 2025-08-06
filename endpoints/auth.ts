@@ -1,12 +1,12 @@
 /*
  * 1. login
- *    1. send otp
- *    2. verify otp
- * 2. refresh token
+ *    1. send otp [common]
+ *    2. verify otp [common]
+ * 2. refresh token [comman]
  * 3. profile
- *    1. get profile
- *    2. update profile
- *    3. verify update profile
+ *    1. get profile [common]
+ *    2. update profile [common]
+ *    3. verify update profile [common]
  */
 
 import { messagesSuccess } from "../messages/success";

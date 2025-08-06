@@ -1,10 +1,10 @@
 /*
- * 1. create conversation
- * 2. get all conversations
- * 3. get conversation by id
- * 4. answer conversation by id
- * 5. question conversation by id
- * 6. delete conversation by id
+ * 1. create conversation [student]
+ * 2. get all conversations by collection id [student/mentor/teacher]
+ * 3. get conversation by conversation id [student/mentor/teacher]
+ * 4. answer conversation by conversation id [mentor/teacher]
+ * 5. question conversation by conversation id [student]
+ * 6. delete conversation by conversation id [student]
  */
 
 import { messagesSuccess } from "../messages/success";
