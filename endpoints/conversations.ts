@@ -14,7 +14,7 @@ import type {
   ConversationResponder,
 } from "../types/conversation";
 import type { Request } from "../types/request";
-import type { UserRoleConversation, UserRoleManagment } from "../types/role";
+import type { Role } from "../types/role";
 
 export const getAllConversationsByCollectionId: Request<
   void,
@@ -100,7 +100,7 @@ export const getConversationByConversationId: Request<void, Conversation> = {
           timestamp: new Date().toISOString(),
           text: "I have a question about my order.",
           file: null,
-          role: "student" as UserRoleConversation & UserRoleManagment,
+          role: "student" as Pick<Role, 'role'>,
         },
         {
           id: "111213",
@@ -108,7 +108,7 @@ export const getConversationByConversationId: Request<void, Conversation> = {
           fullName: "Support Agent",
           timestamp: new Date().toISOString(),
           text: "Sure, I can help you with that.",
-          role: "mentor" as UserRoleConversation & UserRoleManagment,
+          role: "mentor" as Pick<Role, 'role'>,
           file: null,
           score: 5,
           voice: null,

@@ -1,4 +1,4 @@
-import type { UserRoleConversation, UserRoleManagment } from "./role";
+import type { Role } from "./role";
 
 export type ConversationRequester = {
   id: string;
@@ -6,7 +6,7 @@ export type ConversationRequester = {
   fullName: string;
   timestamp: string;
   text: string;
-  role: UserRoleConversation & UserRoleManagment;
+  role: Pick<Role, 'role'>;
   file: File | null;
 };
 
@@ -17,7 +17,7 @@ export type ConversationResponder = {
   timestamp: string;
   text: string;
   score: number | null;
-  role: UserRoleConversation & UserRoleManagment;
+  role: Pick<Role, 'role'>;
   file: File | null;
   voice: string | null;
 };
